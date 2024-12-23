@@ -1,0 +1,32 @@
+<form method="get" action="{% url 'stock_data' %}">
+    <label for="start_date">Start Date:</label>
+    <input type="date" name="start_date">
+    <label for="end_date">End Date:</label>
+    <input type="date" name="end_date">
+    <button type="submit">Filter</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Opening Price</th>
+            <th>Closing Price</th>
+            <th>Highest Price</th>
+            <th>Lowest Price</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in stock_data %}
+        <tr>
+            <td>{{ record.symbol }}</td>
+            <td>{{ record.opening_price }}</td>
+            <td>{{ record.closing_price }}</td>
+            <td>{{ record.highest_price }}</td>
+            <td>{{ record.lowest_price }}</td>
+            <td>{{ record.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
